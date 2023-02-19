@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <title>Project</title>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script>
+        var myapp = angular.module('myapp',[])
+        myapp.controller('controll', function ($scope) {
+            $scope.validate_form = function(event){
+                
+                if($scope.name == undefined || $scope.age == undefined || $scope.dat == undefined || $scope.eid == undefined ){
+                    // console.log($scope.name)
+                    document.getElementById("error1").innerHTML="Fields need to be enetered"
+                }
+                else{
+                    // console.log('sdhfbashdf')
+                    document.getElementById("error1").innerHTML=""
+                }
+                if($scope.gender == undefined || !($scope.skill1 == true || $scope.skill2 == true ) || ($scope.cars == undefined)){
+                    document.getElementById("error2").innerHTML="Some Fields need to be Selected"
+                }
+                else{
+                    console.log($scope.skill1, $scope.skill2, $scope.skill3, $scope.skill4)
+                    document.getElementById("error2").innerHTML=""
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+    <div ng-app = "myapp" ng-controller = "controll">
+        <p id = "error1"></p>
+        <p id = "error2"></p>
+
+
+        <p><%= messages %></p>
+
+        <% for(var i=0; i < messages.length; i++) { %>
+            <p>Name of employee:<%= messages[i].name %></p> 
+            <p>.EBasicPay :<%= messages[i].EBasicPay %></p> 
+            <p>HRA : <%= messages[i].EBasicPay*12 %></p> 
+            <p>PF: <%= messages[i].EBasicPay*15 %></p> 
+          <p>Total Salary: <%= messages[i].EBasicPay*15 + messages[i].EBasicPay*12 %></p>
+            <br /><br /> ....... <br /><br />
+        <% } %>
+
+          
+    </div>
+</body>
