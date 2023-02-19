@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <title>Project</title>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script>
+        var myapp = angular.module('myapp',[])
+        myapp.controller('controll', function ($scope) {
+            $scope.validate_form = function(event){
+                
+                if($scope.name == undefined || $scope.age == undefined || $scope.dat == undefined || $scope.eid == undefined ){
+                    // console.log($scope.name)
+                    document.getElementById("error1").innerHTML="Fields need to be enetered"
+                }
+                else{
+                    // console.log('sdhfbashdf')
+                    document.getElementById("error1").innerHTML=""
+                }
+                if($scope.gender == undefined || !($scope.skill1 == true || $scope.skill2 == true ) || ($scope.cars == undefined)){
+                    document.getElementById("error2").innerHTML="Some Fields need to be Selected"
+                }
+                else{
+                    console.log($scope.skill1, $scope.skill2, $scope.skill3, $scope.skill4)
+                    document.getElementById("error2").innerHTML=""
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+    <div ng-app = "myapp" ng-controller = "controll">
+        <p id = "error1"></p>
+        <p id = "error2"></p>
+        <form name = "myform" action = "/">
+            <label for = "name">Name</label>
+            <input type="text" name="name" id = "name" ng-model = "name"><br/>
+            <label for = "eid">EmailId</label>
+            <input type="email" name="email" id = "eid" ng-model = "eid"><br/>
+            <label for = "age">Age</label>
+            <input type="number" name="age" id = "age" ng-model = "age"><br/>
+            <label for = "gender">Gemder</label>
+            <input type="radio" id = "gender" ng-model = "gender" name = "gender" value = "Male"> "Male"<br/>
+            <input type="radio" id = "gender" ng-model = "gender" name = "gender" value = "Female"> "Female"<br/>
+            <label for = "dat">Date</label>
+            <input type = "Date" ng-model = "dat" id = "dat"><br/>
+            <p>Select Ranga Skills</p>
+            <label for="skill1"> Konda</label>
+            <input type = "checkbox" id = 'skill1' ng-model = 'skill1' name = "skill1" value = "Konda" ><br>
+            <label for="skill2">Pedda Konda</label>
+            <input type = "checkbox" id = 'skill2' ng-model = 'skill2' name = "skill1" value = "Pedda Konda"><br>
+            <label for="skill3">Kype friend</label>
+            <!-- <input type = "checkbox" id = 'skill3' ng-model = 'skill3' name = "skill1" value = "Kype friend"><br>
+            <label for="skill4">pedda kype Konda friend</label>
+            <input type = "checkbox" id = 'skill4' ng-model = 'skill4' name = "skill1" value = "pedda kype Konda friend"><br> -->
+            <label for="cars">Choose a car:</label>
+
+            <select name="cars" id="cars" ng-model="cars">
+            <!-- <option value="select">Select</option> -->
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+            </select>
+            <input type = "submit" ng-click = "validate_form()">
+        </form>
+    </div>
+</body>
